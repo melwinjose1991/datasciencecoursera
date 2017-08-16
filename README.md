@@ -1,3 +1,3 @@
 # datasciencecoursera
 
-## Part of Data Science Specilization from JHU at Coursera
+## Part of Data Science Specialization from JHU at Coursera
