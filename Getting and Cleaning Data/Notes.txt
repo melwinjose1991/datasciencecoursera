@@ -1,0 +1,19 @@
+Components of Tidy Data
+	-	The raw data
+	-	The tidy data
+	-	Code Book
+			-	Info about variables
+			- 	Info about summary of choices made
+			-	Info about experimental study design you used
+	-	Instruction List
+			-	i/p -> script -> o/p
+			-	script contains no parameters
+
+Downloading Files
+	-	file.exits(), dir.create(), download.file()
+	
+Reading Local Flat Files
+	- 	read.table() - might need to change the defaults
+	
+Reading Excel Files
+	-	read.xlsx(), read.xlsx	{xlsx package}
