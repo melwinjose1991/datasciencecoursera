@@ -17,3 +17,51 @@ Reading Local Flat Files
 	
 Reading Excel Files
 	-	read.xlsx(), read.xlsx	{xlsx package}
+	
+Reading XML
+	-	tags, attributs and elements
+	-	{XML} xmlTreeParse(), xmlRoot(), xmlName()
+			-	rootNode[[1]]
+			- 	rootNode[[1]][[1]]
+	-	XPath : xpathSApply(rootNode, "//node", xmlValue)
+			-	get xmlValue of all 'node' tags
+	-	Notes and further resources @slide-14
+	
+Reading JSON
+	-	{jsonlite} : fromJSON() : returns data-frame (nested)
+	
+The {data.table} Package
+	-	all functions that accept data.frame work on data.table
+	-	written in C - much faster
+	-	Create data.table() just like data-frames
+	-	tables() : show all tables in memory
+	-	subsetting row : similar to data-frame, DT[2,] OR DT[DT$y=='a',]
+	-	subsetting columns : DT[, .(V1, V2, V3)]
+	-	DT[, list(mean(x), sum(z))] : list of functions to perform on columns
+	-	DT[, w:=z^2] : adding new column-w using column-z^2 , in-place
+	-	DT2 <- DT : is a reference !!!
+	-	DT[, m:={ tmp=(x+z); log2(tmp+5) }]
+	- 	DT[, a:x>0] : creates a binary, TRUE when x>0
+	-	DT[, b:=mean(x+w), by=a]
+	-	DT[, .N, by=x] : creates a pivot table for count of different values in x
+	-	setKey(DT, x) : x=column-name
+			- D['a'] : row where x==a
+	-	merge(DT1, DT2) : joins : faster
+	-	Fast reading : write.table() -> fread()
+	
+	-	data.table v data.frame @stackOverflow
+		- https://stackoverflow.com/questions/13618488/what-you-can-do-with-data-frame-that-you-cant-in-data-table
+		
+	-	Raphael Gottardo's notes @GitHub
+	
+	- 	AV : https://www.analyticsvidhya.com/blog/2016/05/data-table-data-frame-work-large-data-sets/
+			-	DT[row condition, column condition, group by]
+			-	Updating row values :  DT[V8 == "Aberdeen City", V8 := "Abr City"]
+			-	Deleting a col : DT [,c("V6","V7") := NULL ]
+			-	Chaining of cmds :
+				DT[V8 == "Aberdeen City", V8 := "Abr City"][, V_New := V10 + V11][,c("V6","V7") := NULL]
+			-	Avg on group : DT[, .(average = mean(V1o)), by = V4]
+			-	Compute Count : DT[, .N, by = V4]
+			-	DT[,.(mean(Capacity)),by=State] = .() is shorthand for list
+					Here, its also equal to DT[, mean(Capacity), by=State]
+			-	
