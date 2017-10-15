@@ -1,0 +1,41 @@
+Summarizing Data
+	>	pg  9: 2-D table : table(var1, var2)
+	>	pg 11: checking for NA columns : colSums(is.na(data))
+	>	pg 14: CROSS TABS : 
+				xtabs( <var value in cell> ~ <var_1> + <var_2> + ... , data=df ) 
+				xtabs( <var value in cell> ~ . , data=df )
+	>	pg 17: Flat Tables
+				
+Creating new variables
+	>	pg  9: Cutting by quantile : cut2()
+	>	pg 13: Mutate Function
+	
+Reshaping Data
+	>	pg  4: melt(df, id, measure.vars)
+	>	pg  5: casting data frames 
+				dcast(melt.obj, var_1 ~ var_2)			# Counts
+				dcast(melt.obj, var_1 ~ var_2, mean)	# Mean
+	>	pg  7: split(count_measure, variable_to_group_by)
+	>	pg 10: plyr::ddply()
+	
+dplyr intro
+	>	Is very fast
+	> 	pg 4:	verbs : select, filter, arrange, rename, mutate, summarize
+				
+dplyr basic tools
+	>	select column : select( df, col1:col2), select(df, -(col1:col2) )
+	>	select row : filter( df, <some_condition on values of column(s)> )
+	>	sort by column : arrange( df, col)
+	>	rename columns : rename( df, new_col_name=old_col_name)
+	>	create new var : mutate( df, new_var_col = <how to create them> )
+	>	group by : group_by(df, cat_col)
+	>	summary : summarize(df, col=<how to create them while grouping>)
+	>	pipeline : 	 df %>% mutate(col_new_1=<how to create this new col>)
+						%>% group_by(cat_col) 
+						%>% summarize(col=<how to create them while grouping>)
+	>	works with data.table and SQL
+
+Merging Data
+	>	merge(df1, df2, by.x, by.y, all=TRUE)
+	>	arrange(join(df1,df2),id)
+	>	join_all()
